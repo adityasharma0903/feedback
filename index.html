@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+\<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,7 +29,7 @@
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            margin: 4rem;
+            margin: 0;
             padding: 20px;
             background-color: var(--background-color);
             color: var(--text-color);
@@ -46,7 +46,7 @@
         }
 
         .container {
-            max-width: 500px;
+            max-width: 100%;
             margin: auto;
             padding: 20px;
             background-color: var(--container-bg);
@@ -58,7 +58,7 @@
         h2 {
             text-align: center;
             color: var(--text-color);
-            font-size: 1.8em;
+            font-size: 1.5em;
         }
 
         form {
@@ -78,6 +78,8 @@
             border-radius: 4px;
             background-color: var(--container-bg);
             color: var(--text-color);
+            width: 100%;
+            box-sizing: border-box;
         }
 
         button {
@@ -89,6 +91,7 @@
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s;
+            width: 100%;
         }
 
         button:hover {
@@ -111,7 +114,8 @@
         .star-rating {
             display: flex;
             flex-direction: row-reverse;
-            justify-content: flex-end;
+            justify-content: center;
+            margin-top: 10px;
         }
 
         .star-rating input {
@@ -137,16 +141,17 @@
 
         .theme-toggle {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 10px;
+            left: 10px;
             background-color: var(--button-bg);
             color: var(--button-color);
             border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
+            padding: 6px 12px;
+            border-radius: 15px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.8rem;
             transition: background-color 0.3s;
+            
         }
 
         .theme-toggle:hover {
@@ -154,23 +159,12 @@
         }
 
         /* Responsive styling */
-        @media (max-width: 600px) {
+        @media (min-width: 600px) {
             .container {
-                padding: 15px;
-                margin: 10px;
-                width: 90%;
+                max-width: 500px;
             }
             h2 {
-                font-size: 1.5em;
-            }
-            .star-rating label {
-                width: 24px;
-                height: 24px;
-                background-size: 70%;
-            }
-            button {
-                padding: 10px;
-                font-size: 1em;
+                font-size: 1.8em;
             }
             .theme-toggle {
                 padding: 8px 16px;
@@ -180,7 +174,7 @@
     </style>
 </head>
 <body>
-    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+    <button class="theme-toggle" onclick="toggleTheme()" style="width: 150px;">Dark Mode</button>
     <div class="container">
         <h2>Feedback Form</h2>
         <form id="feedbackForm">
@@ -214,8 +208,6 @@
             <p>We appreciate your input and will review it shortly.</p>
         </div>
     </div>
-
-    <iframe src="https://adityasharma0903.github.io/chatbot/" style="border: none; position: fixed; bottom: 0; right: 0; width: 380px; height: 600px; z-index: 1000;" id="chatbot-frame"></iframe>
 
     <script>
         function toggleTheme() {
@@ -267,16 +259,7 @@
                 alert('Please fill in all fields, including the star rating');
             }
         });
-
-        window.addEventListener('message', function(event) {
-            if (event.data === 'chatbotOpened') {
-                document.getElementById('chatbot-frame').style.width = '380px';
-                document.getElementById('chatbot-frame').style.height = '600px';
-            } else if (event.data === 'chatbotClosed') {
-                document.getElementById('chatbot-frame').style.width = '100px';
-                document.getElementById('chatbot-frame').style.height = '100px';
-            }
-        }, false);
     </script>
 </body>
 </html>
+
